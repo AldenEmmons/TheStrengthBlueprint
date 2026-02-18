@@ -3,171 +3,442 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Strength Blueprint</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <title>The Strength Blueprint | Pain-Free Strength</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --navy: #0f1923;
+      --navy-mid: #1a2a3a;
+      --orange: #e8541a;
+      --orange-light: #f06b31;
+      --cream: #f5f0e8;
+      --grey: #8a9ab0;
+      --light: #f8f9fc;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1a1a2e; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: #fff;
+      overflow-x: hidden;
+    }
 
     /* HEADER */
     header {
       position: sticky; top: 0; z-index: 100;
-      background: #ffffff;
-      padding: 20px 60px;
+      background: rgba(15, 25, 35, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 18px 60px;
       display: flex; justify-content: space-between; align-items: center;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
-    header h1 { font-size: 1.2rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: #1a1a2e; }
-    header h1 span { color: #f05a28; }
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem; font-weight: 900;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: #fff;
+    }
+    .logo span { color: var(--orange); }
     nav a {
-      margin-left: 30px; text-decoration: none; color: #555;
-      font-size: 0.9rem; font-weight: 600; letter-spacing: 0.5px;
+      margin-left: 35px; text-decoration: none;
+      color: var(--grey); font-size: 0.88rem;
+      font-weight: 600; letter-spacing: 0.5px;
       transition: color 0.2s;
     }
-    nav a:hover { color: #f05a28; }
+    nav a:hover { color: #fff; }
+    .nav-cta {
+      margin-left: 35px !important;
+      background: var(--orange) !important;
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--orange-light) !important; color: #fff !important; }
 
     /* HERO */
     .hero {
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; padding: 120px 20px 100px;
-      background: linear-gradient(160deg, #f8f9ff 0%, #eef1ff 100%);
+      min-height: 92vh;
+      display: flex; align-items: center;
+      padding: 80px 60px;
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
     }
-    .hero .badge {
-      background: #fff0eb; color: #f05a28;
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; padding: 8px 20px;
-      border-radius: 50px; margin-bottom: 25px;
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 55%; height: 100%;
+      background: linear-gradient(135deg, var(--navy-mid) 0%, #0d1f30 100%);
+      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
     }
-    .hero h2 {
-      font-size: 3.5rem; font-weight: 900; line-height: 1.1;
-      color: #1a1a2e; max-width: 700px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative; z-index: 2;
+      width: 100%;
     }
-    .hero h2 span { color: #f05a28; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(232, 84, 26, 0.15);
+      border: 1px solid rgba(232, 84, 26, 0.4);
+      color: var(--orange);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      padding: 8px 18px; border-radius: 3px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 5rem; font-weight: 900;
+      line-height: 0.95; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero h1 .line-orange { color: var(--orange); display: block; }
     .hero p {
-      margin: 25px auto 0; max-width: 520px;
-      color: #666; font-size: 1.1rem; line-height: 1.8;
+      color: var(--grey);
+      font-size: 1.05rem; line-height: 1.8;
+      max-width: 460px; margin-bottom: 40px;
     }
-    .hero-buttons { display: flex; gap: 15px; margin-top: 40px; flex-wrap: wrap; justify-content: center; }
+    .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
     .btn-primary {
-      padding: 16px 40px; background: #f05a28; color: #fff;
-      font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
-      border-radius: 6px; text-decoration: none; font-size: 0.9rem;
+      padding: 16px 36px;
+      background: var(--orange); color: #fff;
+      font-weight: 700; font-size: 0.88rem;
+      text-transform: uppercase; letter-spacing: 2px;
+      border-radius: 4px; text-decoration: none;
       transition: background 0.2s, transform 0.2s;
+      display: inline-block;
     }
-    .btn-primary:hover { background: #d44e20; transform: translateY(-2px); }
-    .btn-secondary {
-      padding: 16px 40px; background: transparent; color: #1a1a2e;
-      font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
-      border-radius: 6px; text-decoration: none; font-size: 0.9rem;
-      border: 2px solid #1a1a2e; transition: all 0.2s;
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+    .btn-ghost {
+      padding: 16px 36px;
+      background: transparent; color: #fff;
+      font-weight: 700; font-size: 0.88rem;
+      text-transform: uppercase; letter-spacing: 2px;
+      border-radius: 4px; text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.2s; display: inline-block;
     }
-    .btn-secondary:hover { background: #1a1a2e; color: #fff; }
+    .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
 
-    /* STATS BAR */
+    /* HERO RIGHT SIDE CARDS */
+    .hero-right { display: flex; flex-direction: column; gap: 16px; }
+    .method-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; padding: 24px 28px;
+      display: flex; gap: 20px; align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .method-card:hover { border-color: rgba(232,84,26,0.4); }
+    .method-step {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--orange); line-height: 1;
+      min-width: 36px;
+    }
+    .method-card h3 {
+      font-size: 0.95rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .method-card p { color: var(--grey); font-size: 0.88rem; line-height: 1.6; }
+
+    /* STATS */
     .stats {
-      display: flex; justify-content: center; gap: 60px;
-      padding: 50px 40px; background: #1a1a2e; flex-wrap: wrap;
+      background: var(--orange);
+      padding: 40px 60px;
+      display: flex; justify-content: center;
+      gap: 80px; flex-wrap: wrap;
     }
     .stat { text-align: center; }
-    .stat h3 { font-size: 2.2rem; font-weight: 900; color: #f05a28; }
-    .stat p { font-size: 0.85rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
-
-    /* FEATURES */
-    .features { padding: 100px 40px; background: #fff; text-align: center; }
-    .features h2 { font-size: 2.2rem; font-weight: 900; color: #1a1a2e; margin-bottom: 12px; }
-    .features .sub { color: #888; font-size: 1rem; margin-bottom: 60px; }
-    .cards { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
-    .card {
-      background: #f8f9ff; border-radius: 12px;
-      padding: 40px 30px; max-width: 280px; text-align: left;
-      border: 1px solid #eee; transition: transform 0.2s, box-shadow 0.2s;
+    .stat h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3rem; font-weight: 900; color: #fff;
+      line-height: 1;
     }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
-    .card .icon { font-size: 2rem; margin-bottom: 20px; }
-    .card h3 { font-size: 1.1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 12px; }
-    .card p { color: #777; line-height: 1.7; font-size: 0.95rem; }
+    .stat p { color: rgba(255,255,255,0.75); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 6px; }
+
+    /* THE GAP SECTION */
+    .gap-section {
+      padding: 100px 60px;
+      background: var(--light);
+      color: var(--navy);
+    }
+    .gap-section .section-label {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 16px;
+    }
+    .gap-section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3rem; font-weight: 900;
+      text-transform: uppercase; line-height: 1.1;
+      max-width: 600px; margin-bottom: 20px;
+    }
+    .gap-section > p {
+      color: #555; font-size: 1.05rem; line-height: 1.8;
+      max-width: 580px; margin-bottom: 60px;
+    }
+    .gap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      border-radius: 8px; overflow: hidden;
+    }
+    .gap-card {
+      background: #fff; padding: 36px 32px;
+      border-top: 3px solid transparent;
+    }
+    .gap-card.highlight { border-top-color: var(--orange); background: var(--navy); color: #fff; }
+    .gap-card .tag {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 3px;
+      margin-bottom: 16px; display: inline-block;
+      background: #f0f0f0; color: #999;
+    }
+    .gap-card.highlight .tag { background: rgba(232,84,26,0.2); color: var(--orange); }
+    .gap-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
+    .gap-card.highlight h3 { color: #fff; }
+    .gap-card p { font-size: 0.9rem; line-height: 1.7; color: #666; }
+    .gap-card.highlight p { color: var(--grey); }
+
+    /* WHO IT'S FOR */
+    .for-section {
+      padding: 100px 60px;
+      background: var(--navy-mid);
+    }
+    .for-section .section-label {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 16px;
+      text-align: center;
+    }
+    .for-section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3rem; font-weight: 900;
+      text-transform: uppercase; text-align: center;
+      margin-bottom: 60px;
+    }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px; max-width: 900px; margin: 0 auto 50px;
+    }
+    .pain-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; padding: 28px;
+    }
+    .pain-card .pain-label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 10px;
+    }
+    .pain-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .pain-card p { color: var(--grey); font-size: 0.88rem; line-height: 1.6; }
 
     /* CTA SECTION */
-    .cta {
-      background: linear-gradient(135deg, #f05a28, #d44e20);
-      padding: 100px 40px; text-align: center; color: #fff;
+    .cta-section {
+      padding: 120px 60px;
+      background: var(--navy);
+      text-align: center;
+      position: relative; overflow: hidden;
     }
-    .cta h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 15px; }
-    .cta p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 40px; }
-    .btn-white {
-      padding: 16px 40px; background: #fff; color: #f05a28;
-      font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
-      border-radius: 6px; text-decoration: none; font-size: 0.9rem;
-      transition: transform 0.2s;
+    .cta-section::before {
+      content: 'BLUEPRINT';
+      position: absolute;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20rem; font-weight: 900;
+      color: rgba(255,255,255,0.02);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap; pointer-events: none;
+      letter-spacing: 10px;
     }
-    .btn-white:hover { transform: translateY(-2px); }
+    .cta-section .section-label {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 20px;
+    }
+    .cta-section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 4rem; font-weight: 900;
+      text-transform: uppercase; line-height: 1.05;
+      margin-bottom: 20px; position: relative; z-index: 2;
+    }
+    .cta-section p {
+      color: var(--grey); font-size: 1.05rem;
+      line-height: 1.8; max-width: 500px;
+      margin: 0 auto 40px; position: relative; z-index: 2;
+    }
 
     /* FOOTER */
     footer {
-      background: #1a1a2e; color: #aaa;
-      text-align: center; padding: 30px;
-      font-size: 0.85rem;
+      background: #080f16;
+      padding: 30px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--grey); font-size: 0.82rem;
+      flex-wrap: wrap; gap: 10px;
     }
-    footer span { color: #f05a28; }
+    footer a { color: var(--grey); text-decoration: none; margin-left: 20px; }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 768px) {
+      header { padding: 16px 24px; }
+      nav a { margin-left: 16px; font-size: 0.8rem; }
+      .hero { padding: 60px 24px; min-height: auto; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 3.5rem; }
+      .hero::before { display: none; }
+      .stats { padding: 40px 24px; gap: 40px; }
+      .gap-section, .for-section, .cta-section { padding: 70px 24px; }
+      .gap-grid { grid-template-columns: 1fr; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .cta-section h2 { font-size: 2.8rem; }
+      footer { padding: 24px; flex-direction: column; text-align: center; }
+      footer a { margin: 0 10px; }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>The Strength <span>Blueprint</span></h1>
+    <div class="logo">The Strength <span>Blueprint</span></div>
     <nav>
-      <a href="#">About</a>
-      <a href="#">Programs</a>
-      <a href="#">Contact</a>
+      <a href="#">Method</a>
+      <a href="#">Who It's For</a>
+      <a href="#">Results</a>
+      <a href="#" class="nav-cta">Free Assessment</a>
     </nav>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
-    <div class="badge">💪 Coaching That Gets Results</div>
-    <h2>Build Your <span>Strongest</span> Self — Inside & Out</h2>
-    <p>Science-backed training programs designed to help you get stronger, move better, and build a body that lasts for life.</p>
-    <div class="hero-buttons">
-      <a href="#" class="btn-primary">Start Your Blueprint</a>
-      <a href="#" class="btn-secondary">Learn More</a>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-badge">Pain-Free Strength · Online Coaching</div>
+        <h1>
+          You Shouldn't Have
+          <span class="line-orange">To Choose.</span>
+        </h1>
+        <p>Most coaches make you pick between being pain-free and being strong. We bridge clinical physical therapy precision with elite strength programming — so you never have to choose again.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary">Book Free Assessment</a>
+          <a href="#" class="btn-ghost">See The Method</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="method-card">
+          <div class="method-step">01</div>
+          <div>
+            <h3>Assess</h3>
+            <p>We find the root cause of your pain or plateau — not just the symptom. A full movement screen, no guesswork.</p>
+          </div>
+        </div>
+        <div class="method-card">
+          <div class="method-step">02</div>
+          <div>
+            <h3>Correct</h3>
+            <p>Evidence-based corrective exercise and prehab to fix compensatory patterns before they hold you back.</p>
+          </div>
+        </div>
+        <div class="method-card">
+          <div class="method-step">03</div>
+          <div>
+            <h3>Perform</h3>
+            <p>Progressive strength programming built around your body — hypertrophy, strength, or fat loss. Finally done right.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="stats">
+  <!-- STATS -->
+  <div class="stats">
     <div class="stat"><h3>500+</h3><p>Clients Coached</p></div>
-    <div class="stat"><h3>98%</h3><p>Client Satisfaction</p></div>
     <div class="stat"><h3>5+</h3><p>Years Experience</p></div>
-  </section>
+    <div class="stat"><h3>100%</h3><p>Online & Flexible</p></div>
+    <div class="stat"><h3>3-Phase</h3><p>Proven Method</p></div>
+  </div>
 
-  <section class="features">
-    <h2>Everything You Need to Succeed</h2>
-    <p class="sub">No fluff. Just a proven system that works.</p>
-    <div class="cards">
-      <div class="card">
-        <div class="icon">🎯</div>
-        <h3>Smart Programming</h3>
-        <p>Every session is built with purpose. No guesswork — just a clear path to your goals.</p>
+  <!-- THE GAP -->
+  <section class="gap-section">
+    <div class="section-label">The Problem</div>
+    <h2>Two Worlds That Never Talk To Each Other</h2>
+    <p>Physical therapists clear you to return to the gym — but don't know how to program for performance. Strength coaches push your numbers — but ignore your injury history. You've been stuck in between.</p>
+    <div class="gap-grid">
+      <div class="gap-card">
+        <div class="tag">Physical Therapy</div>
+        <h3>Gets You Out Of Pain</h3>
+        <p>Excellent at rehabilitation and corrective work — but stops short of performance. You're "cleared" with no roadmap back to the weight room.</p>
       </div>
-      <div class="card">
-        <div class="icon">📈</div>
-        <h3>Proven Results</h3>
-        <p>Trusted by athletes and everyday people who want real, lasting progress.</p>
+      <div class="gap-card highlight">
+        <div class="tag">The Strength Blueprint</div>
+        <h3>Pain-Free & Performing</h3>
+        <p>We sit at the intersection. Clinical thinking applied to gym performance. You move through rehab and into a customized strength program — no gap, no guesswork.</p>
       </div>
-      <div class="card">
-        <div class="icon">🛠️</div>
-        <h3>Built For You</h3>
-        <p>Programs designed around your schedule, your goals, and your life.</p>
+      <div class="gap-card">
+        <div class="tag">Typical Strength Coach</div>
+        <h3>Gets You Strong</h3>
+        <p>Great at programming for performance — but ignores injury history. Your shoulder, knee, or back becomes an afterthought until it becomes a crisis.</p>
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <h2>Ready to Build Your Blueprint?</h2>
-    <p>Take the first step toward the strongest version of yourself.</p>
-    <a href="#" class="btn-white">Get Started Today</a>
+  <!-- WHO IT'S FOR -->
+  <section class="for-section">
+    <div class="section-label">Who This Is For</div>
+    <h2>Built For Frustrated, Motivated Adults</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-label">Pain Point 01</div>
+        <h3>Chronic Joint Pain Limiting Your Training</h3>
+        <p>You've been told to rest it — but rest hasn't fixed it. Poor movement mechanics and weak stabilizers are likely the real issue.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-label">Pain Point 02</div>
+        <h3>Strength Plateau You Can't Break Through</h3>
+        <p>You don't need a harder program. You need compensatory patterns identified and corrected so your body can actually accept more load.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-label">Pain Point 03</div>
+        <h3>Repeated Injuries Every Training Cycle</h3>
+        <p>It's not age. It's the absence of structured prehab and progressive loading built into your programming from the start.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-label">Pain Point 04</div>
+        <h3>Fear of Re-Injury Holding You Back</h3>
+        <p>You shouldn't have to stop lifting. You need a guided return-to-performance protocol — not a generic program and a prayer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-label">Get Started</div>
+    <h2>Your First Step Is Free.<br>No Pressure. No Pitch.</h2>
+    <p>Book a free movement assessment and find out exactly what's holding you back — and what it will take to fix it.</p>
+    <a href="#" class="btn-primary">Book Free Movement Assessment</a>
   </section>
 
   <footer>
-    <p>&copy; 2026 <span>The Strength Blueprint</span>. All rights reserved.</p>
+    <div class="logo" style="font-family: 'Barlow Condensed', sans-serif; font-size:1rem; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:#fff;">
+      The Strength <span style="color:#e8541a;">Blueprint</span>
+    </div>
+    <div>
+      <a href="#">Pain-Free Strength</a>
+      <a href="#">thestrengthblueprint.com</a>
+    </div>
+    <div>&copy; 2026 The Strength Blueprint. All rights reserved.</div>
   </footer>
 
 </body>
